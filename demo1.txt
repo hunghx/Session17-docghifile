@@ -1,0 +1,4 @@
+• Bộ nhớ đệm (buffer) cho một nơi lưu trữ tạm thời để tăng hiệu quả
+củathao tácđọc/ghiđữliệu
+• Bộ nhớ đệm trong java được hỗ trợ qua việc sử dụng lớp
+BufferWriter trong góijava.io
