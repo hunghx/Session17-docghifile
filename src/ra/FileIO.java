@@ -7,6 +7,9 @@ import java.util.List;
 
 public class FileIO {
     public static void main(String[] args) throws IOException {
+        // Bai tạp , tạo menu crud danh sách sinh viên sử dụng IO file để lưu trữ dữ liệu
+
+
 //        File file = new File("text.pptx");
 //        if(file.exists()){
 //            System.out.println("file có tồn tại");
@@ -154,8 +157,8 @@ public class FileIO {
         return true;
     }
     // List là 1 object
-    public static List<Student> readFromFileBinary(String path){
-        List<Student> list = new ArrayList<>();
+    public static <T> List<T> readFromFileBinary(String path){
+        List<T> list = new ArrayList<>();
         StringBuilder content = new StringBuilder();
         File file = new File(path);
         if (!file.exists()){
@@ -167,7 +170,7 @@ public class FileIO {
         try{
             fis = new FileInputStream(file);
             ois =new ObjectInputStream(fis);
-            list = (List<Student>) ois.readObject();
+            list = (List<T>) ois.readObject();
         }catch (IOException | ClassNotFoundException e){
             System.out.println(e.getMessage());
         }finally {
@@ -188,7 +191,7 @@ public class FileIO {
         }
         return list;
     }
-    public static boolean writeToFileBinary(String pathName, List<Student> list){
+    public static <T> boolean writeToFileBinary(String pathName, List<T> list){
         File file = new File(pathName); // có cần kiểm tra tồn tại không ?
         FileOutputStream fos = null;
         ObjectOutputStream oos =null;
