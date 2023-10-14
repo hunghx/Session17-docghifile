@@ -160,15 +160,15 @@ public class FileIO {
     public static <T> List<T> readFromFileBinary(String path){
         List<T> list = new ArrayList<>();
         StringBuilder content = new StringBuilder();
-        File file = new File(path);
-        if (!file.exists()){
-            System.err.println("file không tồn tại");
-            return new ArrayList<>();
-        }
+//        File file = new File(path);
+//        if (!file.exists()){
+//            System.err.println("file không tồn tại");
+//            return new ArrayList<>();
+//        }
         FileInputStream fis = null;
         ObjectInputStream ois = null;
         try{
-            fis = new FileInputStream(file);
+            fis = new FileInputStream(path);
             ois =new ObjectInputStream(fis);
             list = (List<T>) ois.readObject();
         }catch (IOException | ClassNotFoundException e){
@@ -193,6 +193,7 @@ public class FileIO {
     }
     public static <T> boolean writeToFileBinary(String pathName, List<T> list){
         File file = new File(pathName); // có cần kiểm tra tồn tại không ?
+        file.length();
         FileOutputStream fos = null;
         ObjectOutputStream oos =null;
         try{
